@@ -23,28 +23,3 @@ void printBinary (int x)
 	}
 	cout << endl;
 }
-
-int main(int argc, char *argv[])
-{
-	// print command line parameters
-	cout << "command line parameters num: " << argc << endl;
-	for (int i = 0; i < argc; i++)
-	{
-		cout << argv[i] << endl;
-	}
-	cout << endl;
-
-	if (argc < 2)
-	{
-		cout << "please input an integer." << endl;
-		return 0;
-	}
-	
-	char *input = argv[1];
-	int i = atoi(input);
-	cout << "you input: " << i << endl;
-
-	printBinary (i);
-
-	return 0;
-}
