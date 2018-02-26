@@ -26,5 +26,8 @@ int main()
 	cout << "\nNow trying to set time with illegal am/pm ('X') " << endl;
 	mealTime.set(5, 0, 'X');
 
+	// 测试操作符重载<<
+	cout << "<< " << mealTime << endl;
+
 	return 0;
 }

@@ -45,7 +45,7 @@ void Time::set(unsigned hours, unsigned minutes, char am_pm)
 	}
 }
 
-// --- dispaly 函数的定义
+// --- display 函数的定义
 void Time::display(ostream &out) const
 {
 	out << myHours << ':'
@@ -61,4 +61,11 @@ int toMilitary(unsigned hours, unsigned minutes, char am_pm)
 		hours = 0;
 
 	return hours * 100 + minutes + ('P' == am_pm ? 1200 : 0);
+}
+
+// --- 重载输出操符的定义
+ostream &operator<<(ostream &out, const Time &time)
+{
+	time.display(out);
+	return out;
 }

@@ -40,3 +40,8 @@ private:
 	char myAm_pm; // 'A' or 'P'
 	unsigned myMilTime;
 };
+
+/*
+ * 重载输出操作符
+ */
+ostream & operator<<(ostream &out, const Time &time);
