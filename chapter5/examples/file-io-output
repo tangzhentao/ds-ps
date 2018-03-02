@@ -1,0 +1,26 @@
+
+--> There were 10 values
+ ranging from 44 to 100
+and their average is 77.5
+
+
+string empFileName;
+ifstream inputStream;
+inputStream.open(empFileName.data());
+assert(inputStream.is_open());
+
+string empFileName;
+ifstream inputStream(empFileName.data());
+assert(inputStream.is_open());
+
+string empFileName;
+ofstream outputSteam;
+ofstream.open(empFileName.data());
+assert(outputSteam.is_open());
+
+string empFileName;
+ofstream outputSteam(empFileName.data());
+assert(outputSteam.is_open());
+
+inputStream.close();
+
