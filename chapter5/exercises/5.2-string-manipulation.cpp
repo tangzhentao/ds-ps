@@ -77,7 +77,7 @@ string monthName(unsigned month)
 	return name;
 }
 
-unsigned monthNum(string month)
+unsigned monthNum(const string &month)
 {
 	unsigned num = 0;
 	if (month == "January")
