@@ -45,6 +45,33 @@ void testLower ()
 	}
 }
 
+void testReplace_all ()
+{
+	cout << "Test function:  string replace_all(const string str, const string substr, const string newSubstr)" << endl;
+	while (1)
+	{
+		cout << "Type a string to replace.(q to end)" << endl;
+		string str;
+		cin >> str;
+		if ("q" == str)
+		{
+			cout << "end the test." << endl;
+			break;
+		}
+		cout << "You typed string: " << str << endl;
+		cout << "Type a substr" << endl;
+		string substr;
+		cin >> substr;
+		cout << "You typed substr: " << substr << endl;
+		cout << "Type a newSubstr" << endl;
+		string newSubstr;
+		cin >> newSubstr;
+		cout << "You typed newStr: " << newSubstr << endl;
+		string newStr = replace_all(str, substr, newSubstr);
+		cout << "newStr: " << newStr<< endl;
+	}
+}
+
 int main()
 {
 	string str;
@@ -104,6 +131,9 @@ int main()
 	cout << endl;
 
 	testLower();
+	cout << endl;
+
+	testReplace_all();
 	cout << endl;
 
 	return 0;

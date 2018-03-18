@@ -47,3 +47,8 @@ string upper (const string str);
  * 4.2 转成小写字符串
  */
 string lower(const string str);
+
+/*
+ * 5. 遇到的所有substr都替换为newSubstr
+ */
+string replace_all(const string str, const string substr, const string newSubstr);

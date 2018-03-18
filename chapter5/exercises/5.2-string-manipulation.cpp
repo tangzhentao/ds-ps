@@ -159,3 +159,20 @@ string lower(const string str)
 
 	return lowerStr;
 }
+
+string replace_all(const string str, const string substr, const string newSubstr)
+{
+	string newStr = str;
+	unsigned lenToReplace = substr.length(); // 要替换子串的长度
+	int position = 0;
+	unsigned count = 0;
+	while (string::npos != (position = newStr.find(substr, position)))
+	{
+		++count;
+		newStr.replace(position, lenToReplace, newSubstr);
+		position += newSubstr.length(); 
+		cout << count << ": " << newStr << endl;
+	}
+
+	return newStr;
+}
