@@ -131,3 +131,31 @@ unsigned monthNum(const string &month)
 
 	return num;
 }
+
+string upper(const string str)
+{
+	string upperStr = "";
+	unsigned len = str.length();
+	for (int i = 0; i < len; i++)
+	{
+		char c = str[i];
+		c = toupper(c);
+		upperStr += c;
+	}
+
+	return upperStr;
+}
+
+string lower(const string str)
+{
+	string lowerStr = "";
+	unsigned len = str.length();
+	for (int i = 0; i < len; i++)
+	{
+		char c = str[i];
+		c = tolower(c);
+		lowerStr += c;
+	}
+
+	return lowerStr;
+}

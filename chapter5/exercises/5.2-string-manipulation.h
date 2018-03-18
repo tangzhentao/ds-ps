@@ -36,3 +36,14 @@ string monthName(unsigned month);
  *		返回对应月份的数字
  */
 unsigned monthNum(const string &month);
+
+/*
+ * 4.1 转成大写字符串
+ */
+string upper (const string str);
+
+
+/*
+ * 4.2 转成小写字符串
+ */
+string lower(const string str);

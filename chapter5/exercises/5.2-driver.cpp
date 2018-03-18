@@ -6,6 +6,45 @@
 
 using namespace std;
 
+
+void testUpper ()
+{
+	cout << "Test function: string upper(const string str)" << endl;
+	while (1)
+	{
+		cout << "Type a string to upper.(q to end)" << endl;
+		string str;
+		cin >> str;
+		if ("q" == str)
+		{
+			cout << "end the test." << endl;
+			break;
+		}
+		cout << "You typed: " << str << endl;
+		string upperStr = upper(str);
+		cout << "upper str: " << upperStr << endl;
+	}
+}
+
+void testLower ()
+{
+	cout << "Test function: string lower(const string str)" << endl;
+	while (1)
+	{
+		cout << "Type a string to lower.(q to end)" << endl;
+		string str;
+		cin >> str;
+		if ("q" == str)
+		{
+			cout << "end the test." << endl;
+			break;
+		}
+		cout << "You typed: " << str << endl;
+		string lowerStr = lower(str);
+		cout << "lower str: " << lowerStr << endl;
+	}
+}
+
 int main()
 {
 	string str;
@@ -58,5 +97,14 @@ int main()
 		unsigned num = monthNum(monthName);
 		cout << "The number of " << monthName << " is " << num << endl;
 	}
+
+	cout << endl;
+	
+	testUpper ();
+	cout << endl;
+
+	testLower();
+	cout << endl;
+
 	return 0;
 }
