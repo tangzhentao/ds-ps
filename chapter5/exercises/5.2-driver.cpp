@@ -72,6 +72,32 @@ void testReplace_all ()
 	}
 }
 
+void testFormatName1 ()
+{
+	cout << "Test function: string formatName1(const string name, const string mName, const string lName)" << endl;
+	while (1)
+	{
+		cout << "Type a name.(q to end): " << endl;
+		string name;
+		cin >> name;
+		if ("q" == name)
+		{
+			cout << "end the test." << endl;
+			break;
+		}
+		cout << "Type a middle name: " << endl;
+		string mName;
+		cin >> mName;
+
+		cout << "Type a last name: " << endl;
+		string lName;
+		cin >> lName;
+
+		string newName = formatName1(name, mName, lName);
+		cout << "The formated name is: " << newName << endl;
+	}
+}
+
 int main()
 {
 	string str;
@@ -136,5 +162,7 @@ int main()
 	testReplace_all();
 	cout << endl;
 
+	testFormatName1();
+	cout << endl;
 	return 0;
 }

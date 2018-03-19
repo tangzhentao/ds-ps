@@ -60,7 +60,7 @@ string replace_all(const string str, const string substr, const string newSubstr
  * 后置条件：
  *	返回一个包含三个部分的名字
  */
-string formatName1(const string name, const string mName, lName);
+string formatName1(const string name, const string mName, string  lName);
 
 /*
  * 7.接收一个包含名字、中名和姓的字符串，返回另外一种形式的一个字符串

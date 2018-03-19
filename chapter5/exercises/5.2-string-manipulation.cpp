@@ -179,5 +179,23 @@ string replace_all(const string str, const string substr, const string newSubstr
 
 string formatName1(const string name, const string mName, const string lName)
 {
-	
+	if (0 == name.length() || 0 == mName.length() || 0 == lName.length())
+	{
+		cout << "有一个或多个参数为空" << endl;
+		return "";
+	}
+
+	string newName = lName + ',' + name + ' ' + mName[0];
+	return newName;
+}
+
+string formatName2(const string name)
+{
+	if (0 == name.length())
+	{
+		cout << "姓名为空" << endl;
+		return "";
+	}
+
+
 }
