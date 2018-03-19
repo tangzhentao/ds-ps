@@ -52,3 +52,22 @@ string lower(const string str);
  * 5. 遇到的所有substr都替换为newSubstr
  */
 string replace_all(const string str, const string substr, const string newSubstr);
+
+/*
+ * 6. 接收名字、中名和姓这三个字符串，返回一个字符串
+ * 前置条件：
+ *	三个组成部分都是有效的字符串，否则未定义
+ * 后置条件：
+ *	返回一个包含三个部分的名字
+ */
+string formatName1(const string name, const string mName, lName);
+
+/*
+ * 7.接收一个包含名字、中名和姓的字符串，返回另外一种形式的一个字符串
+ * 
+ * 前置条件：
+ *	name包含以空格分割的三个部分
+ * 后置条件：
+ *  返回格式化的名字
+ */
+string formartName2(const string name);

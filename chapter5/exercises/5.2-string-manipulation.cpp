@@ -176,3 +176,8 @@ string replace_all(const string str, const string substr, const string newSubstr
 
 	return newStr;
 }
+
+string formatName1(const string name, const string mName, const string lName)
+{
+	
+}
