@@ -98,8 +98,29 @@ void testFormatName1 ()
 	}
 }
 
+void testFormatName2 ()
+{
+	cout << "Test function: string formatName2(const string name)" << endl;
+	while (1)
+	{
+		cout << "Type a name, formart is [name midname lastName].(q to end)" << endl;
+		string name;
+		getline(cin, name);
+		if ("q" == name)
+		{
+			cout << "end the test." << endl;
+			break;
+		}
+		cout << "You typed: " << name<< endl;
+		string newName = formatName2(name);
+	}
+}
+
 int main()
 {
+	testFormatName2();
+	cout << endl;
+
 	string str;
 	string substr; 
 	cout << "Test function: unsigned appearTimes(const string &substr, const string &str);" << endl;
@@ -164,5 +185,7 @@ int main()
 
 	testFormatName1();
 	cout << endl;
+
+
 	return 0;
 }

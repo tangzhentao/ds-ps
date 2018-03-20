@@ -197,5 +197,31 @@ string formatName2(const string name)
 		return "";
 	}
 
+	unsigned oldPostion = 0;
+	unsigned newPosition = name.find(' ', oldPostion);
+	cout << "newPosition: " << newPosition <<" oldPostion: " << oldPostion << endl;
+	unsigned nameLen = newPosition - oldPostion;
+	string fName = name.substr(oldPostion, nameLen);
+	cout << "name: " << '['  << fName <<']'  << endl;
+
+	// LeBron Raymone James
+	oldPostion = newPosition + 1;
+	newPosition = name.find(' ', oldPostion);
+	cout << "newPosition: " << newPosition <<" oldPostion: " << oldPostion << endl;
+	nameLen = newPosition - oldPostion;
+	string mName = name.substr(oldPostion, nameLen);
+	cout << "mName: " << '[' << mName << ']' << endl;
+
+	oldPostion = newPosition + 1;
+	newPosition = name.find(' ', oldPostion);
+	cout << "newPosition: " << newPosition <<" oldPostion: " << oldPostion << endl;
+	nameLen = newPosition - oldPostion;
+	string lName = name.substr(oldPostion, nameLen);
+	cout << "lName: " << '[' << lName << ']' << endl;
+
+	string newName = lName + ',' + fName + ' ' + mName[0];
+	cout << "newName: " << newName << endl;
+
+	return newName;
 
 }

@@ -70,4 +70,4 @@ string formatName1(const string name, const string mName, string  lName);
  * 后置条件：
  *  返回格式化的名字
  */
-string formartName2(const string name);
+string formatName2(const string name);
