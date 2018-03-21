@@ -368,16 +368,54 @@ bool isPlalindrome(const string & str)
 
 string dictionaryOrder(const string &str)
 {
-	if (str.length < 2)
+	unsigned len = str.length();
+	if (len < 2)
 	{
 		return str;
 	}
 
-	string tmp = str;
+	cout << "length: " << len << endl;
+	char *tmp = new char[len + 0];
+	//tmp[len] = 0;
+	for (int i = 0; i < len; i++)
+	{
+		tmp[i] = str[i];
+		cout << tmp[i] << endl;
+	}
 
+	cout << "sort: " << tmp << endl;
+	for (int i = 0; i < len; i++)
+	{
+		int small = i;
+		for (int j = i+1; j < len; j++)
+		{
+			if (tmp[j] < tmp[small])
+			{
+				small = j;
+			}
+		}
+		cout << i << ' ' << tmp[small] << endl;
+		char mid = tmp[i];
+		tmp[i] = tmp[small];
+		tmp[small] = mid;
+	}
+	string newstr = string(tmp);
+
+	cout << "new str: " << newstr << endl;
+	return newstr;
 }
 
 bool isAnagram(const string &str1, const string &str2)
 {
-	
+	bool is = false;
+	unsigned len1 = str1.length();	
+	unsigned len2 = str2.length();	
+	if (len1 == len2)
+	{
+		string orderStr1 = dictionaryOrder(str1);
+		string orderStr2 = dictionaryOrder(str2);
+		is = (orderStr1 == orderStr2);
+	}
+
+	return is;
 }

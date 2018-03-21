@@ -6,6 +6,34 @@
 
 using namespace std;
 
+void testIsAnagram ()
+{
+	cout << "Test function: bool isAnagram(const string &str1, const string &str2)" << endl;
+	while (1)
+	{
+		cout << "Type a str.(q to end)" << endl;
+		string str;
+		getline(cin, str);
+		if ("q" == str)
+		{
+			cout << "end the test." << endl;
+			break;
+		}
+
+		cout << "type another str:" << endl;
+		string aStr;
+		getline(cin, aStr);
+
+		cout << "You typed: \n" << str << endl;
+		cout << aStr;
+		bool b = isAnagram(str, aStr);
+		cout << str << endl;
+		cout << '&' << endl;
+		cout << aStr << endl;
+		cout << (b ? "are " : "are not ") << "anagram" << endl;
+	}
+}
+
 void testIsPlalindrome ()
 {
 	cout << "Test function: bool isPlalindrome(const string & str)" << endl;
@@ -172,6 +200,9 @@ void testFormatName2 ()
 
 int main()
 {
+	testIsAnagram();
+	cout << endl;
+
 	testIsPlalindrome();
 	cout << endl;
 
