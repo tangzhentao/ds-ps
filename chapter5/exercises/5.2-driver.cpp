@@ -6,6 +6,60 @@
 
 using namespace std;
 
+void testIsPlalindrome ()
+{
+	cout << "Test function: bool isPlalindrome(const string & str)" << endl;
+	while (1)
+	{
+		cout << "Type a string.(q to end)" << endl;
+		string str;
+		cin >> str;
+		if ("q" == str)
+		{
+			cout << "end the test." << endl;
+			break;
+		}
+		cout << "You typed: " << str << endl;
+		bool b = isPlalindrome(str);
+		cout << str << " is plalindrome ?  " << boolalpha << b << endl;
+	}
+}
+void testStringToF ()
+{
+	cout << "Test function: double stringToF(const string & fString)" << endl;
+	while (1)
+	{
+		cout << "Type a decimal string.(q to end)" << endl;
+		string str;
+		cin >> str;
+		if ("q" == str)
+		{
+			cout << "end the test." << endl;
+			break;
+		}
+		cout << "You typed: " << str << endl;
+		double f = stringToF(str);
+		cout << "decimal: " << f << endl;
+	}
+}
+void testStringToI ()
+{
+	cout << "Test function: int stringToI(const string & iStr)" << endl;
+	while (1)
+	{
+		cout << "Type a digit  string.(q to end)" << endl;
+		string str;
+		cin >> str;
+		if ("q" == str)
+		{
+			cout << "end the test." << endl;
+			break;
+		}
+		cout << "You typed: " << str << endl;
+		int i = stringToI(str);
+		cout << "digit: " << i << endl;
+	}
+}
 
 void testUpper ()
 {
@@ -118,6 +172,15 @@ void testFormatName2 ()
 
 int main()
 {
+	testIsPlalindrome();
+	cout << endl;
+
+	testStringToF();
+	cout << endl;
+
+	testStringToI();
+	cout << endl;
+
 	testFormatName2();
 	cout << endl;
 

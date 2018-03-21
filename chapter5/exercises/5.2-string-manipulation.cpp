@@ -225,3 +225,159 @@ string formatName2(const string name)
 	return newName;
 
 }
+
+int stringToI(const string & iString)
+{
+	string iStr = iString;
+	// 空字符串直接返回0
+	if (iStr.empty())
+	{
+		return 0;
+	}
+
+	// 如果有正负号，先删除正负号再判断是否为数字串
+	// 没有符号，则直接判断是否为数字串
+	char sign = iStr.at(0);
+	if ('+' == sign || '-' == sign)
+	{
+		iStr.erase(0, 1);
+	}
+
+	bool isDigitStr = true;
+	unsigned len = iStr.length();
+	for (int i = 0; i < len; i++)
+	{
+		if (false == isdigit(iStr[i]))
+		{
+			isDigitStr = false;
+			break;
+		}
+	}
+
+	if(isDigitStr)
+	{// 是数字串
+		// 转成数字
+		int iValue = atoi(iStr.c_str());
+
+		// 判断符号
+		if ('-' == sign)
+		{
+			return -iValue;
+		}
+		return iValue;
+	} else 
+	{// 不是数字串
+		// 提示、返回0
+	
+		cout << iString << " is not integer." << endl;
+		return 0;
+	}
+}
+
+double stringToF(const string & fString)
+{
+	string fStr = fString;
+	// 空字符串直接返回0
+	if (fStr.empty())
+	{
+		return 0;
+	}
+
+	// 如果有正负号，先删除正负号再判断是否为数字串
+	// 没有符号，则直接判断是否为数字串
+	char sign = fStr.at(0);
+	if ('+' == sign || '-' == sign)
+	{
+		fStr.erase(0, 1);
+	}
+
+	bool isDigitStr = true;
+	int dotCnt = 0;
+	unsigned len = fStr.length();
+	for (int i = 0; i < len; i++)
+	{
+		char c = fStr[i];
+		if (false == isdigit(c))
+		{
+			if ('.' == c)
+			{
+				++dotCnt;
+				if (dotCnt > 1)
+				{
+					isDigitStr = false;
+					break;
+				}
+			} else 
+			{
+				isDigitStr = false;
+				break;
+			}
+		}
+	}
+
+	if(isDigitStr)
+	{// 是数字串
+		// 转成数字
+		double fValue = atof(fStr.c_str());
+
+		// 判断符号
+		if ('-' == sign)
+		{
+			return -fValue;
+		}
+		return fValue;
+	} else 
+	{// 不是数字串
+		// 提示、返回0
+	
+		cout << fString << " is not decimal." << endl;
+		return 0;
+	}
+}
+
+bool isPlalindrome(const string & str)
+{
+	unsigned len = str.length();
+	if (len < 2)
+	{
+		return false;
+	}
+
+	bool isPla = true;
+	unsigned head = 0;
+	unsigned tail = len - 1;
+	while (head < tail)
+	{
+		char h = str[head];
+		char t = str[tail];
+		cout << head << h << " <----> " << t << tail << endl;
+		if (h == t)
+		{
+			++head;
+			--tail;
+		}
+		else 
+		{
+			isPla = false;
+			break;
+		}
+	}
+
+	return isPla;
+}
+
+string dictionaryOrder(const string &str)
+{
+	if (str.length < 2)
+	{
+		return str;
+	}
+
+	string tmp = str;
+
+}
+
+bool isAnagram(const string &str1, const string &str2)
+{
+	
+}

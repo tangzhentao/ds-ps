@@ -71,3 +71,36 @@ string formatName1(const string name, const string mName, string  lName);
  *  返回格式化的名字
  */
 string formatName2(const string name);
+
+/*
+ * 8. 把首部可能带有+、-的整数字符串转换成对应的整数
+ *
+ * 前置条件：
+ *	字符串必须是一个表示整数的字符串，首部可以带有+，-号，也可不带。
+ * 后置条件：
+ *	返回对应的整数，或者0，如果失败的话
+ */
+int stringToI(const string & iStr);
+
+/*
+ * 9. 把首部可能带有+、-的实数字符串转换成对应的实数
+ *
+ * 前置条件：
+ *	字符串必须是一个表示实数的字符串，首部可以带有+，-号，也可不带。
+ * 后置条件：
+ *	返回对应的实数，或者0，如果失败的话
+ */
+double stringToF(const string & fString);
+
+/*
+ * 判断给定的字符串是不是回文
+ * 定义单个字符的字符串不是回文
+ */
+bool isPlalindrome(const string & str);
+
+/*
+ * 判断两个字符串是不是变为词
+ * 变位词：两个字符串包含的字符是一样的，只是这些字符的顺序不一样，比如：
+ * are和ear
+ */
+bool isAnagram(const string &str1, const string &str2);
