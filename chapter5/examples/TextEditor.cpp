@@ -34,3 +34,9 @@ TextEditor::TextEditor(const string &inFilename, const string &outFilename)
 		cout << "Open input file <" << myInFilename << "> failed" << endl;
 	}
 }
+
+string TextEditor::nextLine()
+{
+	getline(in, myLine);
+	return myLine;
+}
