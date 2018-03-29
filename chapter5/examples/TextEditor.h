@@ -12,6 +12,8 @@ class TextEditor
 		TextEditor();
 		TextEditor(const string &inFilename, const string &outFilename);
 		string nextLine();
+		void saveCurrentLine();
+		int state();
 
 	private:
 		string myInFilename;
@@ -19,4 +21,5 @@ class TextEditor
 		ifstream in;
 		string myLine;
 		ofstream out;
+		int myState; // 0：打开输入、输出文件成功，1：打开输入文件失败，2：打开输出文件失败
 };

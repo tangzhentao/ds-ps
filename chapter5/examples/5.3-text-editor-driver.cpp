@@ -14,6 +14,14 @@ int main()
 	cout << "The out file is " << outputFile << endl;
 	
 	TextEditor te(inputFile, outputFile);
+	if (te.state())
+	{
+		// 打开文件失败
+		return 0;
+	}
+
+	// 先获取一行
+	te.nextLine();
 
 	cout << "Editing commands are:" << endl;
 	cout << "\tI str:	Insert string str before another string" << endl; 
@@ -30,25 +38,35 @@ int main()
 		char command;
 		cin >> command;
 
+		bool complete = false;
 		switch (command)
 		{
 			case 'N':
 				{
-					cout << 'N' << endl;
+					// 在获取下一行前，保存当前行到输出文件
+					te.saveCurrentLine();
+
 					string line = te.nextLine();
 					cout << "line: " << line << endl;
+					if (line.empty())
+					{
+						cout << "end of file." << endl;
+						complete = true;
+					}
 				}
 				break;
 
 			case 'Q':
 				{
 					cout << 'Q' << endl;
-					break;
+					complete = true;
+					// 退出前，先保存当前行
+					te.saveCurrentLine();
 				}
 				break;
 		}
 
-		if ('Q' == command)
+		if (complete)
 		{
 			break;
 		}
