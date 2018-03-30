@@ -38,6 +38,11 @@ TextEditor::TextEditor(const string &inFilename, const string &outFilename)
 	}
 }
 
+string TextEditor::line()
+{
+	return myLine;
+}
+
 string TextEditor::nextLine()
 {
 	getline(in, myLine);
@@ -54,4 +59,17 @@ void TextEditor::saveCurrentLine()
 int TextEditor::state ()
 {
 	return myState;
+}
+
+void TextEditor::replace(const string &str, const string &newStr)
+{
+	// 先查找str所在的位置
+	int pos = myLine.find(str);
+	cout << "pos: " << pos << endl;
+	if (string::npos == pos)
+		return;
+
+	// 替换指定位置开始的指定长度的字符串替换为newStr
+	myLine.replace(pos, str.length(), newStr);
+	cout << myLine << endl;
 }

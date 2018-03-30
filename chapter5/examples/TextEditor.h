@@ -11,8 +11,10 @@ class TextEditor
 		// 默认构造函数
 		TextEditor();
 		TextEditor(const string &inFilename, const string &outFilename);
+		string line();
 		string nextLine();
 		void saveCurrentLine();
+		void replace(const string &str, const string &newStr);
 		int state();
 
 	private:

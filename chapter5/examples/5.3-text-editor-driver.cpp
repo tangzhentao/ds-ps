@@ -64,6 +64,21 @@ int main()
 					te.saveCurrentLine();
 				}
 				break;
+
+			case 'R':
+				{
+					cout << "line: " << te.line() << endl;
+					cout << "Type what you want to repace: ";
+					string strToReplace;
+					cin >> strToReplace;
+					cout << "\nwith: ";
+					string newStr;
+					cin >> newStr;
+
+					te.replace(strToReplace, newStr);
+					cout << "replaced line: " << te.line() << endl;
+				}
+				break;
 		}
 
 		if (complete)
