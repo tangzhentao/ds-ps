@@ -73,3 +73,19 @@ void TextEditor::replace(const string &str, const string &newStr)
 	myLine.replace(pos, str.length(), newStr);
 	cout << myLine << endl;
 }
+
+void TextEditor::insert(const string &strToInsert, const string &posStr)
+{
+	if (strToInsert.empty())
+	{
+		return;
+	}
+
+	int pos = myLine.find(posStr);
+	if (string::npos == pos)
+		return;
+
+	string tmp = myLine.insert(pos, strToInsert);
+	cout << "tmp: " << tmp << endl;
+	cout << "myLine: " << myLine << endl;
+}

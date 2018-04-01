@@ -34,6 +34,8 @@ int main()
 
 	while (1)
 	{
+		cout << '\n' << "TEXT: " << te.line() << endl;
+
 		cout << "> ";
 		char command;
 		cin >> command;
@@ -41,13 +43,30 @@ int main()
 		bool complete = false;
 		switch (command)
 		{
+			case 'I':
+				{
+					string strToInsert;
+					cin >> strToInsert;
+
+					cout << "Insert before what string ? ";
+					string posStr;
+					cin >> posStr;
+					te.insert(strToInsert, posStr);
+					cout << '\n' << "TEXT: " << te.line() << endl;
+				}
+				break;
+
+			case 'D':
+				{
+				}
+				break;
+
 			case 'N':
 				{
 					// 在获取下一行前，保存当前行到输出文件
 					te.saveCurrentLine();
 
 					string line = te.nextLine();
-					cout << "line: " << line << endl;
 					if (line.empty())
 					{
 						cout << "end of file." << endl;
@@ -67,7 +86,6 @@ int main()
 
 			case 'R':
 				{
-					cout << "line: " << te.line() << endl;
 					cout << "Type what you want to repace: ";
 					string strToReplace;
 					cin >> strToReplace;
