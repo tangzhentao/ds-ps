@@ -16,6 +16,7 @@ class TextEditor
 		void saveCurrentLine();
 		void insert(const string &strToInsert, const string &posStr);
 		void replace(const string &str, const string &newStr);
+		void remove(const string &str);
 		int state();
 
 	private:

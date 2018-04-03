@@ -58,6 +58,11 @@ int main()
 
 			case 'D':
 				{
+					cout << "Delete what string ? ";
+					string strToDelete;
+					cin >> strToDelete;
+					te.remove(strToDelete);
+					cout << '\n' << "TEXT: " << te.line() << endl;
 				}
 				break;
 

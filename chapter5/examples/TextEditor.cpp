@@ -89,3 +89,15 @@ void TextEditor::insert(const string &strToInsert, const string &posStr)
 	cout << "tmp: " << tmp << endl;
 	cout << "myLine: " << myLine << endl;
 }
+
+void TextEditor::remove(const string &str)
+{
+	int pos = myLine.find(str);
+	if (string::npos != pos)
+	{
+		myLine.erase(pos, str.length());
+	} else 
+	{
+		cout << "Can not found " << str << endl;
+	}
+}
