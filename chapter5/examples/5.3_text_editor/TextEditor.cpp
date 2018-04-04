@@ -74,6 +74,24 @@ void TextEditor::run()
 				}
 				break;
 
+			case 'R':
+				{
+					eatBlanks();
+					getline(cin, str1);
+					cout << "with what? ";
+					getline(cin, str2);
+					replace(str1, str2);
+					cout << "\nTEXT after replace: " << myLine << endl;
+				}
+				break;
+
+			case 'N':
+				{
+					next();
+					cout << "TEXT: " << myLine << endl;
+				}
+				break;
+
 			case 'Q' :
 				{
 					quit();
@@ -124,7 +142,39 @@ void TextEditor::erase(string str)
 	}
 }
 
+void TextEditor::replace(string str1, string str2)
+{
+	int pos = myLine.find(str1);
+	if (string::npos != pos)
+	{
+		myLine.replace(pos, str1.length(), str2);
+	} else 
+	{
+		cout << str1 << " not found." << endl;
+	}
+}
+
+void TextEditor::next()
+{
+	// 保存当前行
+	myOutstream << myLine << endl;
+	// 读取下一行
+	getline(myInstream, myLine);
+}
+
 void TextEditor::quit()
 {
-	exit(0);
+	// 保存当前行
+	if (!myLine.empty())
+	{
+		myOutstream << myLine << endl;
+	}
+
+	while (1)
+	{
+		getline(myInstream, myLine);
+		if (myInstream.eof())
+			break;
+		myOutstream << myLine << endl;
+	}
 }
