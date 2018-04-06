@@ -35,10 +35,46 @@ int main(int argc, char *argv[])
 
 		// e1 * e2 = x * p1 * p2 + 1;
 		
+		int e1, e2;
+		e1 = e2 = 0;
+		bool found = false;
 		for (int x = 1; ; x++)
 		{
-			int right = x * p1 * p2 + 1;
-			for (int e1 = 2; ; )
+			int right = x * p1 * q1 + 1;
+			for (e1 = 3; e1 < right / 2 ; e1++)
+			{
+				cout << "log: x = " << x << " e1 = " << e1 << endl;
+				// e1 不能等于p1、q1
+				if (e1 == p1 || e1 == q1)
+				{
+					cout << "e1(" << e1 << ") is equal to p1(" << p1 << ")" << " or q1(" << q1 << ")" << endl;
+					continue;
+				} else if (false == coprime(e1, p1))
+				{// e1 要和p1、q1互质
+					cout << "e1(" << e1 << ") and p1(" << p1 << ") are not coprime" << endl;
+					continue;
+				} else if (false == coprime(e1, q1))
+				{
+					cout << "e1(" << e1 << ") and q1(" << q1 << ") are not coprime" << endl;
+					continue;
+				}
+
+				// 判断right能不能被e1整除
+				// 如果能整除商就是e2
+				e2 = right / e1;
+				if (right == e1 * e2 && e1 != e2)
+				{
+					found = true;
+					break;
+				}
+			}
+
+			if (found)
+			{
+				cout << "public key: (" << e1 << ", " << n << ")" << endl; 
+				cout << "secret key: (" << e2 << ", " << n << ")" << endl; 
+				break;
+			}
 		}
 	}
 	cout << "hello" << endl;
