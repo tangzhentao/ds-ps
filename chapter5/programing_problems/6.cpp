@@ -9,7 +9,7 @@ using namespace std;
 
 void removeWhitespace(string &str)
 {
-	while(isspace( str.at(0) ))
+	while(!str.empty() && isspace( str.at(0) ))
 	{
 		cout << "删除前：[" << str << "]" << endl;
 		str.erase(0, 1);
@@ -40,6 +40,12 @@ int main()
 	while (getline(infile, line))
 	{
 		removeWhitespace(line);
+		// 跳过空行
+		if (line.empty())
+		{
+			cout << "空行" << endl;
+			continue;
+		}
 		outfile << line << endl;
 	}
 
