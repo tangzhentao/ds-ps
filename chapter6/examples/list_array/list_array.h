@@ -9,13 +9,18 @@
  */
 #include <iostream>
 
-#define CAPACITY 100
+#ifndef LIST
+#define LIST
+
+typedef int ElementType;
+const int CAPACITY = 1024;
 
 using namespace std;
 
 class List
 {
 public:
+
 	/*
 	 * 默认构造函数
 	 *
@@ -28,9 +33,20 @@ public:
 	List();
 
 	/*
+	 * 自定义构造函数
+	 *
+	 * 前置条件：
+	 *	提供一个数组
+	 *
+	 * 后置条件：
+	 *	创建一个元素为给定数组的列表
+	 */
+	List(ElementType a[], int size);
+
+	/*
 	 * 判断是不是空链表
 	 */
-	bool isEmpty();
+	bool isEmpty() const;
 
 	/*
 	 * 在指定位置插入一个元素
@@ -39,7 +55,7 @@ public:
 	 * 后置条件：
 	 *  item被插入到指定的位置
 	 */
-	void insert(int item, unsigned pos);
+	void insert(ElementType item, int pos);
 	
 	/*
 	 * 删除给定的元素
@@ -48,7 +64,7 @@ public:
 	 * 后置条件：
 	 *  返回有没删除成功？返回失败原因？
 	 */
-	void erase(int item);
+	void erase(int pos);
 
 	/*
 	 * 遍历列表
@@ -58,9 +74,19 @@ public:
 	 * 后置条件：
 	 *  打印列表的所有元素
 	 */
-	void traverse();
+	void display(ostream &out) const;
+
 
 private:
-	int array[CAPACITY];
+	ElementType array[CAPACITY];
 	int size;
 };
+
+/*
+ * 重载输出操作符
+ *
+ * 前置条件：输出流已经打开
+ */
+ostream & operator << (ostream &out, const List &list);
+
+#endif
