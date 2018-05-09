@@ -33,6 +33,15 @@ public:
 	List(int maxSize = 1024);
 
 	/*
+	 * 析构函数
+	 *
+	 * 前置条件：无
+	 *
+	 * 后置条件：释放占用的内存
+	 */
+	~List();
+
+	/*
 	 * 判断是不是空链表
 	 */
 	bool isEmpty() const;

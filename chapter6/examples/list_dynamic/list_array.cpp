@@ -2,16 +2,22 @@
  * 实现文件
  */
 #include <iostream>
+#include <cassert>
 #include "list_array.h"
 
 using namespace std;
 
-List::List(int maxSize)
+List::List(int maxSize): size(0), myCapacity(maxSize)
 {
-	myCapacity = maxSize;
-	array = new ElementType[maxSize];
-	size = 0;
-	cout << "myCapacity: " << myCapacity << endl;
+	cout << "size: " << size << ", myCapacity: " << myCapacity << endl;
+	array = new(nothrow) ElementType[maxSize];
+	assert(array != 0);
+}
+
+List::~List()
+{
+	cout << "析构函数" << endl;
+	delete [] array;
 }
 
 bool List::isEmpty() const
