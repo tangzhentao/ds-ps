@@ -6,20 +6,12 @@
 
 using namespace std;
 
-List::List()
+List::List(int maxSize)
 {
+	myCapacity = maxSize;
+	array = new ElementType[maxSize];
 	size = 0;
-}
-
-List::List(ElementType a[], int theSize)
-{
-	cout << __func__ << endl;
-	size = theSize;
-	for (int i = 0; i < theSize; i++)
-	{
-		array[i] = a[i];
-	}
-	cout << "List end" << endl;
+	cout << "myCapacity: " << myCapacity << endl;
 }
 
 bool List::isEmpty() const
@@ -36,11 +28,18 @@ void List::insert(ElementType item, int pos)
 	 */
 	cout << "insert " << item << " at " << pos << endl;
 
-	if (size == CAPACITY)
+	if (size == myCapacity)
+	{
+		cerr << "插入失败，没有空间了" << endl;
 		return ;
+	}
 
 	if (pos > size || pos < 0)
+	{
+		cerr << "插入失败，插入位置不合法" << endl;
 		return ;
+	}
+	
 
 	// 首先右移数组元素为item腾出空间
 	for (int i = size; i > pos; i--)

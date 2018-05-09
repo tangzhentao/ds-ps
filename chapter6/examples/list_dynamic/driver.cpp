@@ -8,7 +8,7 @@ using namespace std;
 
 int main()
 {
-	List list;
+	List list(3);
 
 	// 测试插入
 	list.insert(7, 0);

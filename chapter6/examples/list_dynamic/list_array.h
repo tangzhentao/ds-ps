@@ -21,18 +21,8 @@ class List
 public:
 
 	/*
-	 * 默认构造函数
-	 *
-	 * 前置条件：
-	 *	无
-	 *
-	 * 后置条件：
-	 *	创建一个空列表
-	 */
-	List();
-
-	/*
-	 * 带列表容量构造函数
+	 * 带列表容量构造函数，
+	 * 通过使用参数默认值来使之也是默认构造函数
 	 *
 	 * 前置条件：
 	 *	无
@@ -40,17 +30,7 @@ public:
 	 * 后置条件：
 	 *	创建一个指定容量的空列表
 	 */
-	List(int maxSize): myCapacity(1024);
-	/*
-	 * 自定义构造函数
-	 *
-	 * 前置条件：
-	 *	提供一个数组
-	 *
-	 * 后置条件：
-	 *	创建一个元素为给定数组的列表
-	 */
-	List(ElementType a[], int size);
+	List(int maxSize = 1024);
 
 	/*
 	 * 判断是不是空链表
@@ -88,7 +68,7 @@ public:
 
 private:
 	int myCapacity;
-	ElementType array[CAPACITY];
+	ElementType *array;
 	int size;
 };
 
