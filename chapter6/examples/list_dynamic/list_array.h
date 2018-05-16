@@ -42,6 +42,16 @@ public:
 	~List();
 
 	/*
+	 * 复制构造函数
+	 */
+	List(const List &origion);
+
+	/*
+	 * 赋值运算符重载
+	 */
+	const List & operator= (const List & rightSide);
+
+	/*
 	 * 判断是不是空链表
 	 */
 	bool isEmpty() const;

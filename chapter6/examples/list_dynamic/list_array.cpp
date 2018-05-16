@@ -9,15 +9,58 @@ using namespace std;
 
 List::List(int maxSize): size(0), myCapacity(maxSize)
 {
-	cout << "size: " << size << ", myCapacity: " << myCapacity << endl;
+	cout << "构造函数" << "<"  << this << ">" <<  endl;
 	array = new(nothrow) ElementType[maxSize];
 	assert(array != 0);
+	// size = 0;
+	// myCapacity = maxSize;
 }
 
 List::~List()
 {
-	cout << "析构函数" << endl;
+	cout << "析构函数"  << "<"  << this << ">" <<  endl;
 	delete [] array;
+}
+
+List::List(const List &origion): size(origion.size), myCapacity(origion.myCapacity)
+{
+	cout << "复制构造函数" << "<"  << this << ">" <<  endl;
+	array = new(nothrow) ElementType[myCapacity];
+	assert(NULL != array);
+
+	for (int i = 0; i < size; i++)
+	{
+		array[i] = origion.array[i];
+	}
+}
+
+const List & List::operator=(const List &rightSide)
+{
+	cout << "赋值运算符" << "<"  << this << ">" << " &rightSide<" << &rightSide << ">" << endl;
+
+	// 判断是不是自己赋值给你自己
+	if (this != &rightSide)
+	{
+		// 判断容量是否一样
+		if (myCapacity != rightSide.myCapacity)
+		{
+			// 不一样，则删除旧数组，新建一个容量一样的新数组
+			delete [] array;
+			array = new(nothrow) ElementType[rightSide.myCapacity];
+			assert(array != NULL);
+			size = rightSide.size;
+			myCapacity = rightSide.myCapacity;
+
+		}
+
+		// 用rightSide的数据覆盖自己的数据
+		for (int i = 0; i < myCapacity; i++)
+		{
+			array[i] = rightSide.array[i];
+		}
+	}
+
+	return *this;
 }
 
 bool List::isEmpty() const
@@ -85,7 +128,7 @@ void List::erase(int pos)
 
 void List::display(ostream &out) const
 {
-	out << "List: " << endl;
+	out << "<" << this << ">: " << "size = " << size << ", myCapacity = " << myCapacity  << endl;
 	for (int i = 0; i < size; i++)
 	{
 		out << array[i] << "  ";
@@ -95,9 +138,6 @@ void List::display(ostream &out) const
 
 ostream & operator << (ostream &out, const List &list)
 {
-	if (list.isEmpty())
-		return out;
-
 	list.display(out);
 
 	return out;
