@@ -24,7 +24,8 @@ List::~List()
 
 List::List(const List &origion): size(origion.size), myCapacity(origion.myCapacity)
 {
-	cout << "复制构造函数" << "<"  << this << ">" <<  endl;
+	cout << "访问私有变量：" << origion.size << endl;
+	cout << "复制构造函数" << "<"  << this << ">" << "被赋值的对象<" << &origion << ">" <<  endl;
 	array = new(nothrow) ElementType[myCapacity];
 	assert(NULL != array);
 
