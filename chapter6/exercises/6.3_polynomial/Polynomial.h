@@ -31,7 +31,7 @@ public:
 	void output(ostream &out) const;
 
 	/* 加法操作符重载 */
-	Polynomial & operator + (const Polynomial &polynomial);
+	Polynomial operator + (const Polynomial &polynomial);
 
 	/* 乘法操作符重载 */
 private:
