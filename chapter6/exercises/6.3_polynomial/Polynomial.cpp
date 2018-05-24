@@ -149,6 +149,31 @@ Polynomial Polynomial::operator + (const Polynomial & polynomial)
 	return sum;
 }
 
+Polynomial Polynomial::operator * (const Polynomial &polynomial)
+{
+	// 计算乘积的最大阶
+	int theMaxDegree = maxDegree + polynomial.maxDegree;
+	Polynomial product(theMaxDegree + 1); // 积
+	
+	// 把初始化后product数组置零
+	for (int i = 0; i < theMaxDegree + 1; i++)
+		product.coeficients[i] = 0;
+
+	// 计算多项式乘积
+	for (int i = 0; i < maxDegree + 1; i++)
+	{
+		CoeficentType left = coeficients[i];
+		for (int j = 0; j < polynomial.maxDegree + 1; j++)
+		{
+			CoeficentType right = polynomial.coeficients[j];
+			
+			product.coeficients[i + j] += left * right;
+		}
+	}
+
+	return product;
+}
+
 istream & operator >> (istream &in, Polynomial &polynomial)
 {
 	polynomial.input(in);

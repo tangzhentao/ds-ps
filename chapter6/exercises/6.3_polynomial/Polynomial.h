@@ -34,6 +34,7 @@ public:
 	Polynomial operator + (const Polynomial &polynomial);
 
 	/* 乘法操作符重载 */
+	Polynomial operator * (const Polynomial &polynomial);
 private:
 	int maxDegree; // 多项式最大的阶
 	CoeficentType *coeficients; // 多项式的系数
