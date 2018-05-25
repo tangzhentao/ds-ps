@@ -2,6 +2,7 @@
  * 多项式类的实现
  */
 #include <iostream>
+#include <math.h>
 #include "Polynomial.h"
 
 using namespace std;
@@ -173,6 +174,25 @@ Polynomial Polynomial::operator * (const Polynomial &polynomial)
 
 	return product;
 }
+
+CoeficentType Polynomial::evaluate(CoeficentType value)
+{
+	CoeficentType sum = 0;
+	for (int i = 0; i < maxDegree + 1; i++)
+	{
+		CoeficentType coeficient = coeficients[i];
+		if (0 == value)
+			continue;
+
+		double powValue = pow(value, i);
+		CoeficentType value = coeficient * powValue; 
+		cout << "i: " << i << ", coeficient: " << coeficient << ", powValue: " << powValue << ", value: " << value << endl;
+		sum += value;
+	}
+
+	return sum;
+}
+
 
 istream & operator >> (istream &in, Polynomial &polynomial)
 {

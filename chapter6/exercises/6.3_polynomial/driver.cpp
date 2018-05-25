@@ -42,6 +42,11 @@ int main()
 	cout << "测试乘法：" << endl;
 	Polynomial product = polynomial * polynomial1;
 	cout << "乘积：" << product << endl;
+	
+	cout << "测试给定x的值，求多项式的值" << endl;
+	cout << polynomial << endl;
+	CoeficentType value = polynomial.evaluate(2);
+	cout << "多项式的值为：" << value << endl;
 
 	return 0;
 }

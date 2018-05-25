@@ -35,6 +35,10 @@ public:
 
 	/* 乘法操作符重载 */
 	Polynomial operator * (const Polynomial &polynomial);
+
+	/* 给定x的值求多项式的值 */
+	CoeficentType evaluate(CoeficentType value);
+
 private:
 	int maxDegree; // 多项式最大的阶
 	CoeficentType *coeficients; // 多项式的系数
