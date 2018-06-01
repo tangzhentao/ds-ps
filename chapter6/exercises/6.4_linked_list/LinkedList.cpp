@@ -13,6 +13,11 @@ LinkedList::LinkedList()
 	size = 0;
 }
 
+LinkedList::LinkedList(const LinkedList &original)
+{
+	size = original.size
+}
+
 LinkedList::~LinkedList()
 {
 	cout << "析构函数：" << this << endl;
@@ -179,4 +184,141 @@ Node * LinkedList::nodeAtIndex(int index)
 	}
 
 	return pNode;
+}
+
+/* 为练习题而写的函数，和多项式本身没有关系 */
+double LinkedList::average()
+{
+	double average = 0;
+	Node *nodePtr = first;
+	int count = 0;
+	double sum = 0;
+	while(nodePtr != NULL)
+	{
+		sum += nodePtr -> data;
+		++ count;
+		nodePtr = nodePtr -> next;
+	}
+
+	if (count > 0)
+		average = sum / count;
+	
+	return average;
+}
+
+bool LinkedList::isAscending()
+{
+	bool isAscending = true;
+	
+	/*
+	 * 1. 链表为空时，看作不是升序
+	 * 2. 链表只有一个元素时，看作是升序
+	 * 3. 其他情况照旧
+	 */
+
+	// 判空
+	if (empty())
+	{
+		isAscending = false;
+	} else if (first -> next == NULL)
+	{
+	} else if (first -> next != NULL)
+	{
+		Node *nodePtr = first;
+		while (NULL != nodePtr)
+		{
+			Node *nextNodePtr = nodePtr -> next;
+			if (NULL == nextNodePtr)
+			{
+				break;
+			} else 
+			{
+				DataType preData = nodePtr -> data;
+				DataType nextData = nextNodePtr -> data;
+				if (preData > nextData)
+				{
+					isAscending = false;
+					break;
+				}
+
+				nodePtr = nextNodePtr;
+			}
+		}
+	}
+
+	return isAscending;
+}
+
+Node *LinkedList::preNodeForData(DataType value)
+{
+	Node *preNode = NULL;
+	Node *nodePtr = first;
+	while (nodePtr -> next)
+	{
+		if (value == nodePtr -> next -> data)
+		{
+			preNode = nodePtr;
+			break;
+		}
+
+		nodePtr = nodePtr -> next;
+	}
+
+	return preNode;
+}
+
+void LinkedList::insertNext(Node newNode, int index)
+{
+	insert(newNode, index + 1);
+}
+
+void LinkedList::removeNodeAt(int index)
+{
+	cout << "删除第" << index << "个节点" << endl;
+	// 检查index是否合法
+	if (index < 0 || index >= size)
+	{
+		cerr << "index 不合法："  << index << endl;
+		return ;
+	}
+
+	// 删除头节点
+	if (0 == index)
+	{
+		Node *nodeToDelete = first;
+		first = first -> next;
+
+		// 释放要删除节点的内存
+		delete nodeToDelete;
+
+		// size减1
+		--size;
+		
+		return ;
+	}
+
+	// 先找到第index-1个节点
+	int i = 0;
+	Node *pNode = first;
+	for (int i = 1; i <= index - 1; i++)
+	{
+		pNode = pNode -> next;
+	}
+
+	Node *nodeToDelete = pNode -> next;
+	pNode -> next = nodeToDelete -> next;
+
+	// 释放要删除节点的内存
+	delete nodeToDelete;
+
+	// size减1
+	--size;
+
+	return ;
+}
+
+LinkedList LinkedList::shuffleMerge(const LinkedList &list) const
+{
+	if (0 == size)
+		return 
 }

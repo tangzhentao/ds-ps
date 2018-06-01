@@ -15,6 +15,9 @@ public:
 	/* 构造函数 */
 	LinkedList();
 
+	/* 复制构造函数 */
+	LinkedList(const LinkedList &original);
+
 	/* 析造函数 */
 	~LinkedList();
 	
@@ -48,6 +51,34 @@ public:
 
 	/* 获取指定位置的节点 */
 	Node * nodeAtIndex(int index);
+
+	/* 练习题函数 */
+
+	// 平均值
+	double average();
+
+	// 是否是升序
+	bool isAscending();
+
+	/*
+	 * 返回遇到的第一个data为给定指定值的节点的前驱，如果data所属的节点是first，则直接null
+	 */
+	Node *preNodeForData(DataType value);
+
+	/*
+	 * 把给定的节点插入到给定位置index之后
+	 */
+	void insertNext(Node newNode, int index);
+
+	/* 
+	 * 删除给定索引index的节点
+	 */
+	void removeNodeAt(int index);
+
+	/* 
+	 * 交错合并
+	 */
+	LinkedList shuffleMerge(const LinkedList &list) const;
 
 private:
 	Node *first;
