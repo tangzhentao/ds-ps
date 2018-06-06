@@ -15,7 +15,38 @@ LinkedList::LinkedList()
 
 LinkedList::LinkedList(const LinkedList &original)
 {
-	size = original.size
+	cout << "复制构造函数：" << this << ", 复制了" << &original << endl;
+	size = original.size;
+
+	Node *nodePtr = original.first;
+	Node *preNodePtr = NULL;
+	while(nodePtr != NULL)
+	{
+		// 创建一个动态内存的新节点
+		Node *nodeCopyPtr = new(nothrow) Node;
+		// 检查节点是否创建成功
+		assert (nodeCopyPtr != NULL);
+		// 复制值
+		nodeCopyPtr -> data = nodePtr -> data;
+
+		// 把新节点链接到链表上
+		if (NULL == preNodePtr)
+		{
+			// 该节点逻辑上的前驱为空，表明该节点是头节点
+			first = nodeCopyPtr;
+
+		} else 
+		{
+			// 把该节点链接到前驱的后面
+			preNodePtr -> next = nodeCopyPtr;
+		}
+		// 保存该节点为下一个节点的前驱
+		preNodePtr = nodeCopyPtr;
+
+		// 遍历original链表的下一个节点
+		nodePtr = nodePtr -> next;
+	}
+
 }
 
 LinkedList::~LinkedList()
@@ -148,7 +179,7 @@ void LinkedList::remove(int index)
 
 void LinkedList::display(ostream &out) const
 {
-	out << "size: " << size << endl;
+	out << "<" << this << ">size: " << size << endl;
 	Node *node = first;
 	while(NULL != node)
 	{
@@ -319,6 +350,111 @@ void LinkedList::removeNodeAt(int index)
 
 LinkedList LinkedList::shuffleMerge(const LinkedList &list) const
 {
-	if (0 == size)
-		return 
+	// 先创建一个空链接
+	LinkedList mergedList;
+
+	/* 处理特殊情况 */
+	if (0 == size && 0 == list.size)
+	{
+		// 如果两个链表都为空，则返回一个空链表
+		return mergedList;
+	} else if (0 == size)
+	{
+		// 如果自己为空，list不为空，则返回list
+		return list;
+
+	} else if (0 == list.size)
+	{
+		// 如果list为空自己不为空，则返回自己
+		return *this;
+	}
+
+	/* 处理都不为空的情况 */
+	Node *mePtr = first;
+	Node *otherPtr = list.first;
+	Node *preNodePtr = NULL; // 合成链接的前驱
+	bool insertMe = false; // 交替插入的标记
+
+	while (mePtr != NULL || otherPtr != NULL)
+	{
+		// 先动态创建一个空节点
+		Node *newNodePtr = new(nothrow) Node;
+		// 判断是否创建成功
+		assert (newNodePtr != NULL);
+
+		if (NULL == preNodePtr)
+		{// 如果前驱为空，则表明将要插入的节点是合并链表的头节点
+
+			// 复制me的头节点为合并列表的头节点
+			newNodePtr -> data = mePtr -> data;
+			mergedList.first = newNodePtr;
+
+			// 遍历me的下一个节点
+			mePtr = mePtr -> next;
+
+			// 更新前驱
+			preNodePtr = newNodePtr;
+
+			// 切换为下次插入other节点
+			insertMe = false;
+		} else 
+		{// 如果前驱不是空，则表明将要插入的不是头节点
+
+			// 先把新节点连接到前驱的next上，再复制对应的data
+			preNodePtr -> next = newNodePtr;
+			// 更新前驱
+			preNodePtr = newNodePtr;
+
+			// 判断要插入谁的节点
+			if (insertMe)
+			{// 应该插入me的节点
+
+				// me的链表是否到了末尾
+				if (NULL == mePtr)
+				{// 到了末尾，没有节点可插入了
+
+					// 复制other节点data
+					newNodePtr -> data = otherPtr -> data;
+					// 遍历下一个节点
+					otherPtr = otherPtr -> next;
+				} else 
+				{// 还没到末尾
+
+					// 复制data
+					newNodePtr -> data = mePtr -> data;
+					// 遍历下一个节点
+					mePtr = mePtr -> next;
+				}
+				// 切换为插入other的节点
+				insertMe = false;
+			} else 
+			{// 应该插入other的节点
+
+				// other的链表是否到了末尾
+				if (NULL == otherPtr)
+				{// 到了末尾，没有节点可插入了
+
+					// 复制me节点data
+					newNodePtr -> data = mePtr -> data;
+					// 遍历下一个节点
+					mePtr = mePtr -> next;
+				} else 
+				{// 还没到末尾
+
+					// 复制data
+					newNodePtr -> data = otherPtr -> data;
+					// 遍历下一个节点
+					otherPtr = otherPtr -> next;
+				}
+				// 切换为插入me的节点
+				insertMe = true;
+			}
+
+		}
+
+		// mergedList的size加1
+		++mergedList.size;
+	}
+
+	return mergedList;
 }

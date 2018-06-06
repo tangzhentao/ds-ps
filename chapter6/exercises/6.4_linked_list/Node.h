@@ -18,14 +18,14 @@ public:
 
 	Node(DataType theData = 0)
 	{
-		cout << "Node构造函数：" << this << endl;
+		//cout << "Node构造函数：" << this << endl;
 		next = NULL;
 		data = theData;
 	}
 
 	~Node()
 	{
-		cout << "delete node<" << this << ">: " << data << endl;
+		//cout << "delete node<" << this << ">: " << data << endl;
 	}
 };
 

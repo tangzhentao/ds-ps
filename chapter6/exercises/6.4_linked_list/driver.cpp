@@ -75,6 +75,40 @@ void testRmoveNodeAt()
 	cout << endl;
 }
 
+LinkedList aLinkedList()
+{
+	LinkedList list;
+	Node n0(0);
+	Node n1(1);
+	Node n2(2);
+	Node n3(3);
+	Node n4(4);
+	Node n5(5);
+	Node n6(6);
+
+	list.insert(n0, 0);
+	list.insert(n1, 1);
+	list.insert(n2, 2);
+	list.insert(n3, 3);
+	list.insert(n4, 4);
+	list.insert(n5, 5);
+	list.insert(n6, 6);
+
+	return list;
+}
+
+void testCopyLinkedList()
+{
+	cout << endl;
+	cout << "测试复制构造函数：" << endl;
+	LinkedList a = aLinkedList();
+	cout << "a: " << a << endl;
+	LinkedList b = a;
+	cout << "b: " << b << endl;
+	cout << "测试结束" << endl;
+	cout << endl;
+}
+
 void testInsertNext()
 {
 	cout << endl;
@@ -104,6 +138,35 @@ void testInsertNext()
 	cout << list << endl;
 
 	cout << "测试结束" << endl;
+}
+
+void testShuffleMerge()
+{
+	cout << endl;
+	cout << "测试合并" << endl;
+
+	LinkedList a = aLinkedList();
+
+	LinkedList b;
+	Node node0(10);
+	Node node1(11);
+	Node node2(12);
+	Node node3(13);
+	Node node4(14);
+
+	b.insert(node0, 0);
+	b.insert(node1, 1);
+	b.insert(node2, 2);
+	b.insert(node3, 3);
+	b.insert(node4, 4);
+
+	LinkedList m1 = a.shuffleMerge(b);
+	cout << "m1: " << m1 << endl;
+	LinkedList m2 = b.shuffleMerge(a);
+	cout << "m2: " << m2 << endl;
+
+	cout << "测试合并结束" << endl;
+	cout << endl;
 }
 
 int main(int argc, char *argv[])
@@ -185,7 +248,11 @@ int main(int argc, char *argv[])
 
 	// testInsertNext();
 	
-	testRmoveNodeAt();
+	// testRmoveNodeAt();
+	
+	//testCopyLinkedList();
+	
+	testShuffleMerge();
 
 	return 0;
 }
