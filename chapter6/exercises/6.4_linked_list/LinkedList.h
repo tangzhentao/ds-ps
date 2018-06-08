@@ -76,9 +76,14 @@ public:
 	void removeNodeAt(int index);
 
 	/* 
-	 * 交错合并
+	 * 交错合并，复制两链接，生成一个新链接
 	 */
 	LinkedList shuffleMerge(const LinkedList &list) const;
+
+	/* 
+	 * 交错合并，不复制节点，使用两链接原来的节点
+	 */
+	LinkedList shuffleMergeNoCopy(const LinkedList &list);
 
 private:
 	Node *first;
