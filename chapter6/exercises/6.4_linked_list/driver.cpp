@@ -75,24 +75,20 @@ void testRmoveNodeAt()
 	cout << endl;
 }
 
-LinkedList aLinkedList()
+LinkedList aLinkedList(DataType start, int size)
 {
 	LinkedList list;
-	Node n0(0);
-	Node n1(1);
-	Node n2(2);
-	Node n3(3);
-	Node n4(4);
-	Node n5(5);
-	Node n6(6);
+	for(int i = 0; i < size; i++)
+	{
+		Node n(start + i);
+		list.insert(n, i);
+	}
+	return list;
+}
 
-	list.insert(n0, 0);
-	list.insert(n1, 1);
-	list.insert(n2, 2);
-	list.insert(n3, 3);
-	list.insert(n4, 4);
-	list.insert(n5, 5);
-	list.insert(n6, 6);
+LinkedList aLinkedList()
+{
+	LinkedList list = aLinkedList(0, 6);
 
 	return list;
 }
@@ -169,6 +165,18 @@ void testShuffleMerge()
 	cout << endl;
 }
 
+void testShuffleMergeNoCopy()
+{
+	cout << endl;
+	cout << "开始测试不复制的合并" << endl;
+	LinkedList a1 = aLinkedList(0, 6);
+	LinkedList b1 = aLinkedList(7, 4);
+	LinkedList m1 = a1.shuffleMergeNoCopy(b1);
+	cout << "a1: " << a1 << endl;
+	cout << "m1: " << a1 << endl;
+	
+	cout << "结束测试不复制的合并" << endl;
+}
 int main(int argc, char *argv[])
 {
 	LinkedList list;
@@ -252,7 +260,8 @@ int main(int argc, char *argv[])
 	
 	//testCopyLinkedList();
 	
-	testShuffleMerge();
+	//testShuffleMerge();
+	testShuffleMergeNoCopy ();
 
 	return 0;
 }

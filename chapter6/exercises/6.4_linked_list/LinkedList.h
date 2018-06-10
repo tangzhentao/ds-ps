@@ -83,7 +83,12 @@ public:
 	/* 
 	 * 交错合并，不复制节点，使用两链接原来的节点
 	 */
-	LinkedList shuffleMergeNoCopy(const LinkedList &list);
+	LinkedList shuffleMergeNoCopy(LinkedList &list);
+
+	/*
+	 * 合并两个升序链表，得到一个新的升序链表
+	 */
+	LinkedList ascendingMerge(const LinkedList &list) const;
 
 private:
 	Node *first;

@@ -458,3 +458,110 @@ LinkedList LinkedList::shuffleMerge(const LinkedList &list) const
 
 	return mergedList;
 }
+
+LinkedList LinkedList::shuffleMergeNoCopy(LinkedList &list) 
+{
+	size += list.size;
+
+	/* 处理特殊情况 */
+	if (0 == size && 0 == list.size)
+	{
+		// 如果两个链表都为空，则返回一个空链表
+		return *this;
+	} else if (0 == size)
+	{
+		// 如果自己为空，list不为空，则返回list
+		first = list.first;
+		return *this;
+
+	} 
+
+	/* 处理都不为空的情况 */
+	Node *mePtr = first; // 当前插入点
+	Node *otherPtr = list.first; // 待插入点
+	while (mePtr != NULL && otherPtr != NULL)
+	{
+		cout << mePtr -> data << ", " << otherPtr -> next << endl;
+		// 获取当前节点的下一个节点
+		Node *meNextPth = mePtr -> next;
+		// 获取下一个待插入的节点
+		Node *otherNextPtr = otherPtr -> next;
+
+		// 如果当前节点的下一个节点不为空，让待插入节点的next指向当前节点的下一个节点
+		// 如果为空，则不改变待插入后的next, 完成本次插入后也就完成了整个合并操作
+		if (meNextPth != NULL)
+		{
+			otherPtr -> next = meNextPth;
+		}
+		// 让当前节点的next指向待插入节点
+		mePtr -> next = otherPtr;
+
+		// 
+		mePtr = meNextPth;
+		otherPtr = otherNextPtr;
+	}
+
+	return *this;
+}
+
+LinkedList LinkedList::ascendingMerge(const LinkedList &list) const
+{
+	if (!isAscending() || !list.isAscending())
+	{
+		cout << "存在不是升序的链表" << endl;
+		return NULL;
+	}
+
+	LinkedList mergedList;
+	Node *mePtr = first;
+	Node *otherPtr = list.first;
+	Node *mPtr = NULL;
+
+	while (mePtr && otherPtr)
+	{
+		// 创建一个新节点
+		Node *newPtr = new Node;
+		if (NULL == mPtr)
+		{
+			mergedList.first = newPtr;
+		} else
+		{
+			mPtr -> next = newPtr;
+		}
+
+		// 
+		mPtr = newPtr;
+		if (mePtr -> data <= otherPtr)
+		{
+			newPtr -> data = mePtr -> data;
+			mePtr = mePtr -> next;
+		} else 
+		{
+			newPtr -> data = otherPtr -> data;
+			otherPtr = otherPtr -> next;
+		}
+	}
+	/*
+	 实现一个Student类，包含以下功能：
+	 1、包含的属性有：姓名、学号和包含成绩的一个数组(成绩的个数不定,三五个成绩就行)
+	 2、实现默认构造函数、自定义构造函数(以姓名、序号、和成绩数组为参数)
+	 3、实现输出操作符重载
+	 4、实现复制构造函数
+	 5、实现赋值运算符重载
+	 6、实现析构函数
+	 7、实现一个比较成绩好坏的函数(比较两学生的平均成绩，返回成绩好的学生)
+	 
+	 实现测试驱动程序，内容如下：
+	 1、创建一个Student对象
+	 2、输出该对象(使用cout也就是使用输出操作符重载)
+	 3、
+	 要求：
+	 为了清楚的看到每个函数的调用时机，在每个函数中打印这些信息：
+	 1、对象地址
+	 2、函数名
+	 3、对于复制构造函数，打印被复制的对象地址和复制对象的地址
+	 4、对于赋值运算，打印左值对象地址和右值对象地址
+
+	实现类以后，测试每个函数。观察打印信息
+	 /
+}
