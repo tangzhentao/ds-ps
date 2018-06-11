@@ -177,6 +177,59 @@ void testShuffleMergeNoCopy()
 	
 	cout << "结束测试不复制的合并" << endl;
 }
+
+void testAscendingMerge()
+{
+	cout << endl;
+	cout << "开始测试升序合并" << endl;
+	LinkedList l1 = aLinkedList(0, 4);
+	LinkedList l2 = aLinkedList(2, 6);
+	LinkedList l3 = aLinkedList(3, 6);
+	LinkedList l4 = aLinkedList(1, 4);
+
+	LinkedList m1 = l1.ascendingMerge(l2);
+	cout << "m1: " << m1 << endl;
+	LinkedList m2 = l2.ascendingMerge(l1);
+	cout << "m2: " << m2 << endl;
+	LinkedList m3 = l3.ascendingMerge(l4);
+	cout << "m3: " << m3 << endl;
+	LinkedList m4 = l4.ascendingMerge(l3);
+	cout << "m4: " << m4 << endl;
+	cout << "结束测试升序合并" << endl;
+	cout << endl;
+}
+
+void testReverse()
+{
+	cout << endl;
+	cout << "开始测试反转" << endl;
+	LinkedList l1 = aLinkedList(1, 6);
+	LinkedList l2 = aLinkedList(8, 2);
+	LinkedList l3 = aLinkedList(11, 1);
+	LinkedList l4;
+
+	cout << "l1: " << l1 << endl;
+	l1.reverse();
+	cout << "l1: " << l1 << endl;
+
+	cout << "l2: " << l2 << endl;
+	l2.reverse();
+	cout << "l2: " << l2 << endl;
+
+	cout << "l3: " << l3 << endl;
+	l3.reverse();
+	cout << "l3: " << l3 << endl;
+
+	cout << "l4: " << l4 << endl;
+	l4.reverse();
+	cout << "l4: " << l4 << endl;
+
+	cout << "结束测试反转" << endl;
+	cout << endl;
+
+
+}
+
 int main(int argc, char *argv[])
 {
 	LinkedList list;
@@ -261,7 +314,11 @@ int main(int argc, char *argv[])
 	//testCopyLinkedList();
 	
 	//testShuffleMerge();
-	testShuffleMergeNoCopy ();
+	//testShuffleMergeNoCopy ();
+	
+	//testAscendingMerge();
+
+	testReverse();
 
 	return 0;
 }

@@ -58,7 +58,7 @@ public:
 	double average();
 
 	// 是否是升序
-	bool isAscending();
+	bool isAscending() const;
 
 	/*
 	 * 返回遇到的第一个data为给定指定值的节点的前驱，如果data所属的节点是first，则直接null
@@ -89,6 +89,9 @@ public:
 	 * 合并两个升序链表，得到一个新的升序链表
 	 */
 	LinkedList ascendingMerge(const LinkedList &list) const;
+
+	/* 翻转 */
+	void reverse();
 
 private:
 	Node *first;

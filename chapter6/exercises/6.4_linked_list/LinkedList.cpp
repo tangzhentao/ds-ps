@@ -237,7 +237,7 @@ double LinkedList::average()
 	return average;
 }
 
-bool LinkedList::isAscending()
+bool LinkedList::isAscending() const
 {
 	bool isAscending = true;
 	
@@ -509,7 +509,7 @@ LinkedList LinkedList::ascendingMerge(const LinkedList &list) const
 	if (!isAscending() || !list.isAscending())
 	{
 		cout << "存在不是升序的链表" << endl;
-		return NULL;
+		return *this;
 	}
 
 	LinkedList mergedList;
@@ -517,10 +517,11 @@ LinkedList LinkedList::ascendingMerge(const LinkedList &list) const
 	Node *otherPtr = list.first;
 	Node *mPtr = NULL;
 
-	while (mePtr && otherPtr)
+	while (mePtr || otherPtr)
 	{
 		// 创建一个新节点
 		Node *newPtr = new Node;
+		// 把新节点链接到新链表
 		if (NULL == mPtr)
 		{
 			mergedList.first = newPtr;
@@ -529,9 +530,17 @@ LinkedList LinkedList::ascendingMerge(const LinkedList &list) const
 			mPtr -> next = newPtr;
 		}
 
-		// 
+		// 累加合并链表size
+		mergedList.size++;
+
+		// 更新合并链表游标
 		mPtr = newPtr;
-		if (mePtr -> data <= otherPtr)
+
+		/*
+		 * 当other链表达到末尾或者other节点data小于本链表节点data时，插入本链表节点
+		 * 否则，插入other链表的节点
+		 */
+		if (NULL == otherPtr || (mePtr != NULL && mePtr -> data <= otherPtr -> data))
 		{
 			newPtr -> data = mePtr -> data;
 			mePtr = mePtr -> next;
@@ -541,6 +550,8 @@ LinkedList LinkedList::ascendingMerge(const LinkedList &list) const
 			otherPtr = otherPtr -> next;
 		}
 	}
+
+	return mergedList;
 	/*
 	 实现一个Student类，包含以下功能：
 	 1、包含的属性有：姓名、学号和包含成绩的一个数组(成绩的个数不定,三五个成绩就行)
@@ -562,6 +573,34 @@ LinkedList LinkedList::ascendingMerge(const LinkedList &list) const
 	 3、对于复制构造函数，打印被复制的对象地址和复制对象的地址
 	 4、对于赋值运算，打印左值对象地址和右值对象地址
 
-	实现类以后，测试每个函数。观察打印信息
-	 /
+	 实现类以后，测试每个函数。观察打印信息
+	 */
+}
+
+void LinkedList::reverse ()
+{
+	// 大小小于等于1时，直接返回
+	if (size <= 1)
+		return ;
+
+	Node *currentNode = first; // 当前节点
+	Node *nextNode = currentNode -> next; // 后驱
+	Node *previousNode = NULL; // 前驱
+
+	while (currentNode != NULL)
+	{
+		// 翻转当前节点
+		currentNode -> next = previousNode;
+
+		// 更新游标
+		previousNode = currentNode;
+		currentNode = nextNode;
+		if (NULL == nextNode)
+		{
+			first = previousNode;
+		} else 
+		{
+			nextNode = nextNode -> next;
+		}
+	}
 }
