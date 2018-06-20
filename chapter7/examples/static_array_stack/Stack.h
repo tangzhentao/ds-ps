@@ -20,11 +20,17 @@ public:
 	/* 判空 */
 	bool isEmpty() const;
 
+	/* 判满 */
+	bool isFull() const;
+
 	/* 压栈 */
 	void push(const ElementType &value);
 
 	/* 访问栈顶元素 */
 	ElementType getTop() const;
+
+	/* 访问栈底元素 */
+	ElementType getBottom() const;
 
 	/* 弹出栈 */
 	void pop ();

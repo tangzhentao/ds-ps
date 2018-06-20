@@ -22,6 +22,14 @@ bool Stack::isEmpty() const
 }
 
 /*
+ * 判断栈是不是满了
+ */
+bool Stack::isFull() const
+{
+	return (CAPACITY - 1 == top);
+}
+
+/*
  * 压入栈
  */
 void Stack::push(const ElementType &value)
@@ -51,6 +59,25 @@ ElementType Stack::getTop() const
 	return array[top];
 }
 
+/* 
+ * 访问栈底元素
+ *
+ * 前置条件：无
+ * 后置条件：如果栈不为空则返回栈底的元素即，array[0]
+ *			 如果栈为空，则返回一个垃圾数据
+ */
+ElementType Stack::getBottom() const
+{
+	// 检查是不是空栈，如果是空栈则返回新创建的垃圾数据
+	if (isEmpty())
+	{
+		cerr << "当前栈为空，返回的是垃圾数据" << endl;
+		ElementType garbage;
+		return garbage;
+	}
+
+	return array[0];
+}
 /* 
  * 弹出栈
  *
