@@ -38,6 +38,12 @@ public:
 	/* 显示栈中数据 */
 	void display(ostream &out) const;
 
+	/* 练习7.2 第8题
+	 * 提取栈中的第n个元素(从栈顶开始)
+	 * 提取后，这n个元素将被删除
+	 */
+	ElementType nthElement(int n);
+
 private:
 	int top;
 	ElementType array[CAPACITY];

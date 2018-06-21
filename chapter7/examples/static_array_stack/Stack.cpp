@@ -110,3 +110,23 @@ ostream & operator << (ostream &out, const Stack &stack)
 	return out;
 }
 
+ElementType Stack::nthElement(int n)
+{
+	ElementType element;
+	int count = 1;
+	while(count <= n && !isEmpty())
+	{
+		element = getTop();
+		pop();
+		++count;
+	}
+
+	if (n == count)
+		return element;
+	else
+	{
+		cerr << "栈中没有第" << n << "个元素，将返回一个垃圾值。" << endl;
+		ElementType garbage;
+		return garbage;
+	}
+}

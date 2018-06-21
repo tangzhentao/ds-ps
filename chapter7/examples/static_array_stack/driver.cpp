@@ -6,6 +6,29 @@
 
 using namespace std;
 
+/* 习题7.2 第7题
+ * 不使用成员函数和友元函数来返回栈底元素
+ */
+ElementType stackBottom(const Stack &stack)
+{
+	if (stack.isEmpty())
+	{
+		ElementType garbage;
+		return garbage;
+	}
+
+	Stack tmpStack = stack;
+
+	ElementType value = 0;
+	while (!tmpStack.isEmpty())
+	{
+		value = tmpStack.getTop();
+		tmpStack.pop();
+	}
+
+	return value;
+}
+
 int main()
 {
 	char userResponse;
@@ -22,6 +45,12 @@ int main()
 
 		for (int i = 0; i < count; i++)
 			stack.push(i);
+
+		cout << endl;
+		cout << "测试获取栈底元素" << endl;
+		ElementType bottom = stackBottom(stack);
+		cout << "栈底元素是：" << bottom << endl;
+		cout << endl;
 
 		// 测试栈判空
 		cout << "栈是否为空？" << boolalpha << stack.isEmpty() << endl;
