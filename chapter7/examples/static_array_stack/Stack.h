@@ -44,6 +44,11 @@ public:
 	 */
 	ElementType nthElement(int n);
 
+	/* 练习7.3 第9题
+	 * 提取栈中的第n个元素(从栈顶开始)
+	 */
+	ElementType nthElementReadOnly(int n) const;
+
 private:
 	int top;
 	ElementType array[CAPACITY];

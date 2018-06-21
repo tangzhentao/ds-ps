@@ -113,16 +113,30 @@ ostream & operator << (ostream &out, const Stack &stack)
 ElementType Stack::nthElement(int n)
 {
 	ElementType element;
-	int count = 1;
-	while(count <= n && !isEmpty())
+	int count = 0;
+	while(count < n && !isEmpty())
 	{
 		element = getTop();
 		pop();
 		++count;
+
+		cout << "count = " << count << ", element = " << element << endl;
 	}
 
 	if (n == count)
 		return element;
+	else
+	{
+		cerr << "栈中没有第" << n << "个元素，将返回一个垃圾值。" << endl;
+		ElementType garbage;
+		return garbage;
+	}
+}
+
+ElementType Stack::nthElementReadOnly(int n) const
+{
+	if (n > 0 && top + 1 >= n)
+		return array[top - (n-1)];
 	else
 	{
 		cerr << "栈中没有第" << n << "个元素，将返回一个垃圾值。" << endl;

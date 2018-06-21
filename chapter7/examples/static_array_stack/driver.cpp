@@ -58,6 +58,15 @@ int main()
 		cout << "栈顶元素是：" << stack.getTop() << endl;
 		// 测试输出操作符
 		cout << "栈内容：" << stack << endl;
+
+		cout << "\n" << "测试获取第n个元素" << endl;
+		int n;
+		cout << "要获取第几个元素？";
+		cin >> n;
+		ElementType nthElement = stack.nthElementReadOnly(n);
+		cout << "第" << n << "个元素是：" << nthElement << endl;
+		cout << "当前栈为：" << stack << endl;
+
 		// 测试弹栈
 		cout << "输入弹出元素的个数：" ;
 		cin >> count;
